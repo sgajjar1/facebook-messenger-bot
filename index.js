@@ -28,7 +28,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
             if (!kittenMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+                sendMessage(event.sender.id, {text: "Echo: " + event.message});
             }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
@@ -99,3 +99,15 @@ function kittenMessage(recipientId, text) {
     return false;
     
 };
+
+function houseMessage(receipientId, text) {
+
+        text = text || "";
+    var values = text.split(' ');
+    if (values.length >= 3  && values[0] === 'house') {
+        var imageUrl = "https://omhomesaustin.com/" + Number(values[2]) + "/";
+        //include the attachement
+        //send the response
+
+    }
+}
